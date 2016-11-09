@@ -42,10 +42,6 @@ def getResults():
         os.remove(file_name)
     return emails_found
 
-
-def search2(domain):
-    return "test"
-
 @app.route('/domain=<domain>')
 def search(domain):
     threads = []
