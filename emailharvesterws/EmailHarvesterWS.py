@@ -28,24 +28,12 @@ def search2(domain):
 @app.route('/domain=<domain>')
 def search(domain):
     threads = []
-
-    # Create new threads
-    thread1 = myThread(domain, "google")
-    thread2 = myThread(domain, "linkedin")
-    thread3 = myThread(domain, "bing")
-    thread4 = myThread(domain, "yahoo")
-    thread5 = myThread(domain, "github")
-
-    # Start new Threads
-    thread1.start()
-    thread2.start()
-    thread3.start()
-    thread4.start()
-    thread5.start()
-    
-    # Add threads to thread list
-    threads.append(thread1)
-    threads.append(thread2)
+    # Setup search engines
+    engines = ["google", "linkedin", "bing", "yahoo", "github"]
+    for engine in engines:
+        current_thread = myThread(domain, engine)
+        current_thread.start()
+        threads.append(current_thread)
 
     # Wait for all threads to complete
     for t in threads:
