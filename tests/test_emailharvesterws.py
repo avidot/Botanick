@@ -2,18 +2,18 @@
 # -*- coding: utf-8 -*-
 
 """
-test_emailharvesterws
+test_botanick
 ----------------------------------
 
-Tests for `emailharvesterws` module.
+Tests for `botanick` module.
 """
 
 import pytest
 
 
-from emailharvesterws import EmailHarvesterWS
+from botanick import Botanick
 
-def test_emailharvesterws():
-	emails_found = EmailHarvesterWS.search("squad.pro")
+def test_botanick():
+	emails_found = Botanick.search("squad.pro")
 	assert emails_found != ""
 	print(emails_found)
