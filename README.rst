@@ -1,20 +1,20 @@
 ===============================
-EmailHarvester
+Botanick
 ===============================
 
 
-.. image:: https://img.shields.io/pypi/v/EmailHarvesterWS.svg
-        :target: https://pypi.python.org/pypi/EmailHarvesterWS
+.. image:: https://img.shields.io/pypi/v/Botanick.svg
+        :target: https://pypi.python.org/pypi/Botanick
 
-.. image:: https://img.shields.io/travis/avidot/EmailHarvesterWS.svg
-        :target: https://travis-ci.org/avidot/EmailHarvesterWS
+.. image:: https://img.shields.io/travis/avidot/Botanick.svg
+        :target: https://travis-ci.org/avidot/Botanick
 
-.. image:: https://readthedocs.org/projects/EmailHarvesterWS/badge/?version=latest
-        :target: https://EmailHarvesterWS.readthedocs.io/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/Botanick/badge/?version=latest
+        :target: https://Botanick.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
-.. image:: https://pyup.io/repos/github/avidot/EmailHarvesterWS/shield.svg
-     :target: https://pyup.io/repos/github/avidot/EmailHarvesterWS/
+.. image:: https://pyup.io/repos/github/avidot/Botanick/shield.svg
+     :target: https://pyup.io/repos/github/avidot/Botanick/
      :alt: Updates
 
 
@@ -22,7 +22,7 @@ EmailHarvester
 
 
 * Free software: MIT license
-* Documentation: https://EmailHarvesterWS.readthedocs.io.
+* Documentation: https://Botanick.readthedocs.io.
 
 
 Features

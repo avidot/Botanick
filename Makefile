@@ -88,5 +88,5 @@ install: clean ## install the package to the active Python's site-packages
 	python setup.py install
 	
 run:
-	docker build -t emailharvesterws:latest .
-	docker run -d -p 5000:5000 emailharvesterws
+	docker build -t botanick:latest .
+	docker run -d -p 5000:5000 botanick

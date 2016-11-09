@@ -18,34 +18,28 @@ test_requirements = [
 ]
 
 setup(
-    name='emailharvesterws',
+    name='botanick',
     version='0.1.0',
-    description="EmailHarvesterWS",
+    description="Botanick",
     long_description=readme + '\n\n' + history,
     author="Adrien VIDOT",
     author_email='avidot@squad.pro',
-    url='https://github.com/avidot/emailharvesterws',
+    url='https://github.com/avidot/botanick',
     packages=[
-        'emailharvesterws',
+        'botanick',
     ],
-    package_dir={'emailharvesterws':
-                 'emailharvesterws'},
+    package_dir={'botanick':
+                 'botanick'},
     include_package_data=True,
     install_requires=requirements,
     license="MIT license",
     zip_safe=False,
-    keywords='emailharvesterws',
+    keywords='botanick',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
-        "Programming Language :: Python :: 2",
-        'Programming Language :: Python :: 2.6',
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
     ],
     test_suite='tests',
