@@ -3,18 +3,18 @@ EmailHarvester
 ===============================
 
 
-.. image:: https://img.shields.io/pypi/v/emailharvester.svg
-        :target: https://pypi.python.org/pypi/emailharvester
+.. image:: https://img.shields.io/pypi/v/emailharvesterws.svg
+        :target: https://pypi.python.org/pypi/emailharvesterws
 
-.. image:: https://img.shields.io/travis/avidot/emailharvester.svg
-        :target: https://travis-ci.org/avidot/emailharvester
+.. image:: https://img.shields.io/travis/avidot/emailharvesterws.svg
+        :target: https://travis-ci.org/avidot/emailharvesterws
 
-.. image:: https://readthedocs.org/projects/emailharvester/badge/?version=latest
-        :target: https://emailharvester.readthedocs.io/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/emailharvesterws/badge/?version=latest
+        :target: https://emailharvesterws.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
-.. image:: https://pyup.io/repos/github/avidot/emailharvester/shield.svg
-     :target: https://pyup.io/repos/github/avidot/emailharvester/
+.. image:: https://pyup.io/repos/github/avidot/emailharvesterws/shield.svg
+     :target: https://pyup.io/repos/github/avidot/emailharvesterws/
      :alt: Updates
 
 
@@ -22,7 +22,7 @@ EmailHarvester
 
 
 * Free software: MIT license
-* Documentation: https://emailharvester.readthedocs.io.
+* Documentation: https://emailharvesterws.readthedocs.io.
 
 
 Features
