@@ -1,4 +1,4 @@
-Welcome to EmailHarvester's documentation!
+Welcome to Botanick's documentation!
 ======================================
 
 Contents:
