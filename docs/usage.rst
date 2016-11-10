@@ -2,6 +2,6 @@
 Usage
 =====
 
-To use EmailHarvester in a project::
+To use Botanick in a project::
 
-    import emailharvester
+    import botanick
