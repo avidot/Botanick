@@ -18,7 +18,7 @@ Botanick
      :alt: Updates
 
 
-EmailHarvester
+Botanick
 
 
 * Free software: MIT license

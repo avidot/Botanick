@@ -13,4 +13,20 @@ install: pip install -r requirements_dev.txt
 # command to run tests, e.g. python setup.py test
 script: tox -e ${TOXENV}
 
+deploy:
+- provider: pypi
+  server: https://pypi.python.org/pypi
+  on:
+    branch: master
+  user: avidot
+  password:
+    secure: "AEpSeZM4DDLv9h4oIlzkJJZ/nnM46gmHD/5IHtCH2KPhYpiX/kSp/GrQWSSt0iB+RJ36vkD5QiZUh07ZYwwkPDj+khE+phCtOuAU6XGTyk5s9oHfrsQZLVKxoxAkkwusv03WrA2DvqKE+KILGGcfPSkXta1QwJtOKVEqleR/GrYPbhhSz+a8GF337egAa1Fkc/wM1azr5pT1PK0PkdZdiv/n9hsxwutBpYFbGsx2m8nybpQ9lH/ZyggedtG49qf+y8uOUGqv37SRyJx/ELFWYJ8BRiabLiV1vsJKLbZgGru/o3PeVMArUZ4dvnv/jvxCFX0B8V2rYyj8hgEi4OuUz35zSfaQ6xpUf0lDdaOGCxDxbEcfvS1HEjH4VL+s2J3QAjKnzQEYZ1LXuxlT1qf/AcyiT4Lc8Xj0m2+KU7SKFWSEId6Bna+epSfs2dnBXte7zzyXHOcv/gqNt2Ezem4ak+f6HEAuon2L3ayl7MlsPonbWySbPYR6k3s2J3r8GMNilaRESbCPxsLSfN2cxL6hY63/ra2hyRy9Ua+Cw8f8h/e12pRRGjSW5PV06bT/ZlRKn00TLNEBq4AiG7naf0DllMbns0pXPIkWmRydlELB1BoXG36qD4FjSSfzXT/5mgchAxXWrObc6e5Afw2kx1Puy8jxEgsPTY5Cp2r8RhieHFw="
+- provider: pypi
+  server: https://testpypi.python.org/pypi
+  on:
+    branch: develop
+  user: avidot
+  password:
+    secure: "AEpSeZM4DDLv9h4oIlzkJJZ/nnM46gmHD/5IHtCH2KPhYpiX/kSp/GrQWSSt0iB+RJ36vkD5QiZUh07ZYwwkPDj+khE+phCtOuAU6XGTyk5s9oHfrsQZLVKxoxAkkwusv03WrA2DvqKE+KILGGcfPSkXta1QwJtOKVEqleR/GrYPbhhSz+a8GF337egAa1Fkc/wM1azr5pT1PK0PkdZdiv/n9hsxwutBpYFbGsx2m8nybpQ9lH/ZyggedtG49qf+y8uOUGqv37SRyJx/ELFWYJ8BRiabLiV1vsJKLbZgGru/o3PeVMArUZ4dvnv/jvxCFX0B8V2rYyj8hgEi4OuUz35zSfaQ6xpUf0lDdaOGCxDxbEcfvS1HEjH4VL+s2J3QAjKnzQEYZ1LXuxlT1qf/AcyiT4Lc8Xj0m2+KU7SKFWSEId6Bna+epSfs2dnBXte7zzyXHOcv/gqNt2Ezem4ak+f6HEAuon2L3ayl7MlsPonbWySbPYR6k3s2J3r8GMNilaRESbCPxsLSfN2cxL6hY63/ra2hyRy9Ua+Cw8f8h/e12pRRGjSW5PV06bT/ZlRKn00TLNEBq4AiG7naf0DllMbns0pXPIkWmRydlELB1BoXG36qD4FjSSfzXT/5mgchAxXWrObc6e5Afw2kx1Puy8jxEgsPTY5Cp2r8RhieHFw="
+
 
