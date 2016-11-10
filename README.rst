@@ -32,7 +32,10 @@ Botanick
 Features
 --------
 
-* TODO
+* Search email address for a specified domain
+* Reachable by RESTFUL webservice call
+* Reachable by email communication
+* Reachable by hubot integration (slack, gitlab, etc...)
 
 Credits
 ---------
