@@ -86,7 +86,24 @@ dist: clean ## builds source and wheel package
 
 install: clean ## install the package to the active Python's site-packages
 	python setup.py install
-	
-run:
+
+build: # Build Container
 	docker build -t botanick:latest .
+
+run: run-d ## Run for production
+
+run-d: build ## Run in detached mode
 	docker run -d -p 5000:5000 botanick
+
+run-i: build ## Run in interactive mode
+	docker run -it -p 5000:5000 --rm botanick
+
+stop: # Stop container
+	docker ps | awk '{print $$1}' | grep -v CONTAI | xargs docker stop
+
+logs:
+	watch -n 1 "docker ps | awk '{print \$$1}' | grep -v CONTAI | xargs docker logs"
+
+start: run logs
+
+restart: stop run logs
