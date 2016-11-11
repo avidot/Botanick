@@ -40,6 +40,7 @@ $ docker run -d -p 5000:5000 avidot/botanick:latest
 ```
 
 ## Credits
+Authors: Adrien Vidot (avidot), Hervé Beraud (4383)
 
 This package was created with [Cookiecutter] and the [audreyr/cookiecutter-pypackage] project template.
 
