@@ -5,12 +5,14 @@ import subprocess
 import os
 from flask import Flask
 import glob
+import argparse
 
 app = Flask(__name__)
 engines = ["google", "linkedin", "bing", "yahoo", "github"]
 
 
-class myThread (threading.Thread):
+class EngineThread (threading.Thread):
+    """Thread used to call EmailHarvester for a specific engine (google, github, bing, etc...)."""
 
     def __init__(self, domain, engine):
         threading.Thread.__init__(self)
@@ -18,10 +20,19 @@ class myThread (threading.Thread):
         self.engine = engine
 
     def run(self):
+        """Run function for this thread"""
         callEmailHarvester(self.domain, self.engine)
 
 
 def callEmailHarvester(domain, engine):
+    """Call EmailHarvester module.
+
+    Arguments:
+
+    domain -- the domain name (e.g. gmail.com)
+
+    engine -- the engine name (e.g. google, github, bing, etc...)
+    """
     commandToCall = 'emailharvester -d '
     commandToCall += domain
     commandToCall += ' -e '
@@ -33,6 +44,12 @@ def callEmailHarvester(domain, engine):
 
 
 def extractFileContent(filename):
+    """Extract the EmailHarvester results into the result file.
+
+    Arguments:
+    
+    filename -- the result file
+    """
     emails_found = ""
     with open(filename) as f:
         for line in f:
@@ -45,6 +62,7 @@ def extractFileContent(filename):
 
 
 def getResults():
+    """Return all emails found by EmailHarvester."""
     list_of_files = glob.glob('./result_*.txt')
     emails_found = ""
     for file_name in list_of_files:
@@ -55,11 +73,17 @@ def getResults():
 
 @app.route('/domain=<domain>')
 def search(domain):
+    """Search emails for a specific domain name.
+
+    Arguments:
+    
+    domain -- the domain name
+    """
     threads = []
 
     # Setup search engines
     for engine in engines:
-        current_thread = myThread(domain, engine)
+        current_thread = EngineThread(domain, engine)
         current_thread.start()
         threads.append(current_thread)
 
@@ -71,4 +95,12 @@ def search(domain):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    parser = argparse.ArgumentParser()
+    parser.add_argument("launch_mode", help="Possible values are : mail", nargs='?', default="talk")
+    args = parser.parse_args()
+    if args.launch_mode == "talk":
+        app.run(debug=True, host='0.0.0.0')
+    elif args.launch_mode == "mail":
+        print("Mail mode")
+    else:
+        parser.print_help()
