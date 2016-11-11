@@ -1,17 +1,17 @@
 Botanick
 ========
 
-[![image]]
+![image]
 
-[![image][1]]
+![image][1]
 
-[![Codacy Badge]]
+![Codacy Badge]
 
-[![Codacy Coverage Badge]][![Codacy Badge]]
+![Codacy Coverage Badge]![Codacy Badge]
 
-[![Documentation Status]]
+![Documentation Status]
 
-[![Updates]]
+![Updates]
 
 -   Free software: MIT license
 -   Documentation: <https://Botanick.readthedocs.io>.
