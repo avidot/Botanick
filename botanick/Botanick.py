@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import sys
 import threading
 import subprocess
 import os
@@ -48,7 +47,7 @@ def extractFileContent(filename):
     """Extract the EmailHarvester results into the result file.
 
     Arguments:
-    
+
     filename -- the result file
     """
     with open(filename) as f:
@@ -56,7 +55,7 @@ def extractFileContent(filename):
 
 
 def generateOutput(emails):
-    return ", ".join(list(set(emails))).replace('\n', '') 
+    return ", ".join(list(set(emails))).replace('\n', '')
 
 
 def generatedFiles():
