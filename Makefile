@@ -48,7 +48,7 @@ clean-test: ## remove test and coverage artifacts
 	rm -fr htmlcov/
 
 lint: ## check style with flake8
-	flake8 botanick tests
+	flake8 emailharvester tests
 
 test: ## run tests quickly with the default Python
 	py.test
@@ -58,16 +58,16 @@ test-all: ## run tests on every Python version with tox
 	tox
 
 coverage: ## check code coverage quickly with the default Python
-	coverage run --source botanick py.test
+	coverage run --source emailharvester py.test
 	
 		coverage report -m
 		coverage html
 		$(BROWSER) htmlcov/index.html
 
 docs: ## generate Sphinx HTML documentation, including API docs
-	rm -f docs/botanick.rst
+	rm -f docs/emailharvester.rst
 	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ botanick
+	sphinx-apidoc -o docs/ emailharvester
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
 	$(BROWSER) docs/_build/html/index.html
@@ -86,24 +86,7 @@ dist: clean ## builds source and wheel package
 
 install: clean ## install the package to the active Python's site-packages
 	python setup.py install
-
-build: # Build Container
+	
+run:
 	docker build -t botanick:latest .
-
-run: run-d ## Run for production
-
-run-d: build ## Run in detached mode
 	docker run -d -p 5000:5000 botanick
-
-run-i: build ## Run in interactive mode
-	docker run -it -p 5000:5000 --rm botanick
-
-stop: # Stop container
-	docker ps | awk '{print $$1}' | grep -v CONTAI | xargs docker stop
-
-logs:
-	watch -n 1 "docker ps | awk '{print \$$1}' | grep -v CONTAI | xargs docker logs"
-
-start: run logs
-
-restart: stop run logs
