@@ -76,7 +76,7 @@ def search(domain):
     """Search emails for a specific domain name.
 
     Arguments:
-    
+
     domain -- the domain name
     """
     threads = []
