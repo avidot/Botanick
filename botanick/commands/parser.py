@@ -4,9 +4,7 @@ import argparse
 import os
 from const import BASE_PATH
 from const import VERSION
-
-def sample():
-  pass
+from commands.subcommands.webservice import webservice
 
 def version():
   print(VERSION)
@@ -18,7 +16,7 @@ class Parser():
     __args = None
     __instance = None
     __command = None
-    __binding = {'sample': sample, 'version': version}
+    __binding = {'webservice': webservice, 'version': version}
     __parser = None
     __subparser = None
     __args = None
@@ -37,7 +35,7 @@ class Parser():
         """
         self.__parser = argparse.ArgumentParser(description="Python command line utilities {0}".format(VERSION))
         self.__subparser = self.__parser.add_subparsers(description='valid subcommands', help='the sub-command to use')
-        self.__sample()
+        self.__webservice()
         self.__version()
         self.__args = vars(self.__parser.parse_args())
         try:
@@ -46,13 +44,13 @@ class Parser():
             self.__parser.print_help()
             exit(1)
             
-    def __sample(self):
+    def __webservice(self):
         """
-        Sample subcommand for your command line application
+        Launch webservice subcommand from command line application
         """
-        start = self.__subparser.add_parser('start', description='Call the sample subcommand')
-        start.set_defaults(which='sample')
-        start.add_argument('-opt', '--optionnal', help='optionnal argument')
+        webservice = self.__subparser.add_parser('webservice',
+                description='Launch webservice subcommand from command line application')
+        webservice.set_defaults(which='webservice')
         
     def __version(self):
         """

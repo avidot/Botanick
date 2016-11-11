@@ -4,6 +4,9 @@ import os
 import glob
 
 
+engines = ["google", "linkedin", "bing", "yahoo", "github"]
+
+
 class EngineThread (threading.Thread):
     """Thread used to call EmailHarvester for a specific engine (google, github, bing, etc...)."""
 

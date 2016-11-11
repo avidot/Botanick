@@ -7,7 +7,7 @@ from const import SPLASH
 if __name__ == "__main__":
     """
     """
-    info(SPLASH)
+    print(SPLASH)
     try:
         parser = Parser()
         command = parser.getCommand()
@@ -16,5 +16,5 @@ if __name__ == "__main__":
             command()
         else:
             command(args)
-        except KeyboardInterrupt:
-            print('Execution aborted by user ! Bye !')
+    except KeyboardInterrupt:
+        print('Execution aborted by user ! Bye !')
