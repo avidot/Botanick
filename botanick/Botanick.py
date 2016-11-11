@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import sys
 import threading
 import subprocess
 import os
@@ -50,25 +51,25 @@ def extractFileContent(filename):
     
     filename -- the result file
     """
-    emails_found = ""
     with open(filename) as f:
-        for line in f:
-            if line not in emails_found:
-                if emails_found == "":
-                    emails_found = line
-                else:
-                    emails_found = emails_found+", "+line
-    return emails_found
+        return f.readlines()
+
+
+def generateOutput(emails):
+    return ", ".join(list(set(emails))).replace('\n', '') 
+
+
+def generatedFiles():
+    return glob.glob('./result_*.txt')
 
 
 def getResults():
     """Return all emails found by EmailHarvester."""
-    list_of_files = glob.glob('./result_*.txt')
-    emails_found = ""
-    for file_name in list_of_files:
-        emails_found += extractFileContent(file_name)
-        os.remove(file_name)
-    return emails_found
+    emails = []
+    for filename in generatedFiles():
+        emails += extractFileContent(filename)
+        os.remove(filename)
+    return generateOutput(emails)
 
 
 @app.route('/domain=<domain>')
