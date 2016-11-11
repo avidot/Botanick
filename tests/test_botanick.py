@@ -13,7 +13,8 @@ from botanick import Botanick
 
 class TestBotanickMethods(unittest.TestCase):
 
-	def test_botanick(self):
+	@classmethod
+	def test_botanick(cls):
 		emails_found = Botanick.search("squad.pro")
 		assert emails_found != ""
 
