@@ -22,9 +22,6 @@ Botanick
      :alt: Updates
 
 
-Botanick
-
-
 * Free software: MIT license
 * Documentation: https://Botanick.readthedocs.io.
 
