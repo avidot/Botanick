@@ -62,11 +62,17 @@ def generatedFiles():
     return glob.glob('./result_*.txt')
 
 
+def generatedXMLFiles():
+    return glob.glob('./result_*.xml')
+
+
 def getResults():
     """Return all emails found by EmailHarvester."""
     emails = []
     for filename in generatedFiles():
         emails += extractFileContent(filename)
+        os.remove(filename)
+    for filename in generatedXMLFiles():
         os.remove(filename)
     return generateOutput(emails)
 

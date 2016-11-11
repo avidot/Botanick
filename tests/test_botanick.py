@@ -7,10 +7,15 @@ test_botanick
 
 Tests for `botanick` module.
 """
-
-
+import unittest
 from botanick import Botanick
 
-def test_botanick():
-	emails_found = Botanick.search("squad.pro")
-	assert emails_found != ""
+
+class TestBotanickMethods(unittest.TestCase):
+
+	def test_botanick(self):
+		emails_found = Botanick.search("squad.pro")
+		assert emails_found != ""
+
+if __name__ == '__main__':
+    unittest.main()
