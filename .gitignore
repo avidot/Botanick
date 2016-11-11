@@ -13,3 +13,4 @@ _templates
 *egg-info
 .coverage
 coverage.xml
+tmp

@@ -2,9 +2,10 @@
 
 import argparse
 import os
-from const import BASE_PATH
-from const import VERSION
-from commands.subcommands.webservice import webservice
+from botanick.const import BASE_PATH
+from botanick.const import VERSION
+from botanick.commands.subcommands.webservice import webservice
+from botanick.commands.subcommands.inline import inline
 
 def version():
   print(VERSION)
@@ -16,7 +17,7 @@ class Parser():
     __args = None
     __instance = None
     __command = None
-    __binding = {'webservice': webservice, 'version': version}
+    __binding = {'webservice': webservice, 'version': version, 'inline': inline}
     __parser = None
     __subparser = None
     __args = None
@@ -36,6 +37,7 @@ class Parser():
         self.__parser = argparse.ArgumentParser(description="Python command line utilities {0}".format(VERSION))
         self.__subparser = self.__parser.add_subparsers(description='valid subcommands', help='the sub-command to use')
         self.__webservice()
+        self.__inline()
         self.__version()
         self.__args = vars(self.__parser.parse_args())
         try:
@@ -50,7 +52,17 @@ class Parser():
         """
         webservice = self.__subparser.add_parser('webservice',
                 description='Launch webservice subcommand from command line application')
+        webservice.add_argument('-H', '--host', help='Host address to use', default="0.0.0.0")
         webservice.set_defaults(which='webservice')
+        
+    def __inline(self):
+        """
+        Launch inline subcommand from command line application
+        """
+        inline = self.__subparser.add_parser('inline',
+                description='Launch inline subcommand from command line application')
+        inline.add_argument('domain', help='domain to search')
+        inline.set_defaults(which='inline')
         
     def __version(self):
         """

@@ -24,7 +24,8 @@ RUN pip3 install --upgrade pip
 RUN pip3 install -r requirements.txt
 
 COPY ./botanick /app/botanick
-ENV PYTHONIOENCODING=UTF-8
+ENV PYTHONIOENCODING UTF-8
+ENV HOST 0.0.0.0
+ENV PYTHONPATH $PYTHONPATH:/app/botanick
 
-ENTRYPOINT ["python3"]
-CMD ["/app/botanick/Botanick.py"]
+CMD python3 /app/botanick/main.py webservice --host $HOST

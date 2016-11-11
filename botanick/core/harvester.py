@@ -17,10 +17,10 @@ class EngineThread (threading.Thread):
 
     def run(self):
         """Run function for this thread"""
-        callEmailHarvester(self.domain, self.engine)
+        emailHarvester(self.domain, self.engine)
 
 
-def callEmailHarvester(domain, engine):
+def emailHarvester(domain, engine):
     """
     Call EmailHarvester module.
     Arguments:
@@ -34,7 +34,7 @@ def callEmailHarvester(domain, engine):
     subprocess.call(command, shell=True)
 
 
-def extractFileContent(filename):
+def extract(filename):
     """
     Extract the EmailHarvester results into the result file.
     Arguments:
@@ -46,25 +46,58 @@ def extractFileContent(filename):
         return f.readlines()
 
 
-def generateOutput(emails):
-    return ", ".join(list(set(emails))).replace('\n', '') 
+def lsfiles():
+    """
+    List all generated files (txt and xml).
+    """
+    return glob.glob('./result_*.txt'), glob.glob('./result_*.xml')
 
 
-def generatedFiles():
-    return glob.glob('./result_*.txt')
+def files(extension="txt"):
+    """
+    List all file with specified extension (txt and xml).
+    Arguments:
+        extension -- extension to search
+    """
+    txtfiles, xmlfiles = lsfiles()
+    if extension=="txt":
+        return txtfiles
+    elif extension=="xml":
+        return xmlfiles
+    else:
+        raise ValueError("Bad extension format (txt, xml)")
 
 
-def generatedXMLFiles():
-    return glob.glob('./result_*.xml')
+def clean(filename):
+    """
+    Remove specified file (txt and xml).
+    Arguments:
+        filename -- file to delete
+    """
+    os.remove(filename)
+    os.remove(filename.replace("txt", 'xml'))
 
 
-def getResults():
+def results():
     """Return all emails found by EmailHarvester."""
     emails = []
-    for filename in generatedFiles():
-        emails += extractFileContent(filename)
-        os.remove(filename)
-    for filename in generatedXMLFiles():
-        os.remove(filename)
-    return generateOutput(emails)
+    for filename in files():
+        emails += extract(filename)
+        clean(filename)
+    return emails
 
+
+def harvest(domain):
+    """
+    Search emails for a specific domain name.
+    Arguments:
+        domain -- the domain name
+    """
+    threads = []
+    for engine in engines:
+        current_thread = EngineThread(domain, engine)
+        current_thread.start()
+        threads.append(current_thread)
+    for t in threads:
+        t.join()
+    return results()
