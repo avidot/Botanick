@@ -12,6 +12,10 @@ Botanick
 .. image:: https://api.codacy.com/project/badge/Grade/45701b2cbc724d22b60381a8e3cec5e0
    :target: https://www.codacy.com/app/Codacy/python-codacy-coverage
    :alt: Codacy Badge
+
+.. image:: https://api.codacy.com/project/badge/Coverage/45701b2cbc724d22b60381a8e3cec5e0
+   :target: https://www.codacy.com/app/Codacy/python-codacy-coverage
+   :alt: Codacy Coverage Badge
    
 .. image:: https://readthedocs.org/projects/Botanick/badge/?version=latest
         :target: https://Botanick.readthedocs.io/en/latest/?badge=latest
