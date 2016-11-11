@@ -8,5 +8,5 @@ coverage==4.1
 Sphinx==1.4.8
 Flask==0.10.1
 EmailHarvester==2.0.1
-
+argparse==1.4.0
 pytest==2.9.2
