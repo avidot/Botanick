@@ -1,16 +1,11 @@
 Botanick
 ========
 
-![image]
-
-![image][1]
-
-![Codacy Badge]
-
-![Codacy Coverage Badge]![Codacy Badge]
-
-![Documentation Status]
-
+![image] 
+![image][1] 
+![Codacy Badge] 
+![Codacy Coverage Badge]![Codacy Badge] 
+![Documentation Status] 
 ![Updates]
 
 -   Free software: MIT license
