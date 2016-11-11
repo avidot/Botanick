@@ -5,3 +5,7 @@ lib64
 *.swp
 pyvenv.cfg
 pip-selfcheck.json
+_build
+_static
+_templates
+*egg-info
