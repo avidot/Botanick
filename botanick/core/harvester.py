@@ -1,14 +1,9 @@
-# -*- coding: utf-8 -*-
-
-import sys
 import threading
 import subprocess
 import os
-from flask import Flask
 import glob
-import argparse
 
-app = Flask(__name__)
+
 engines = ["google", "linkedin", "bing", "yahoo", "github"]
 
 
@@ -73,36 +68,3 @@ def getResults():
         os.remove(filename)
     return generateOutput(emails)
 
-
-@app.route('/domain=<domain>')
-def search(domain):
-    """
-    Search emails for a specific domain name.
-    Arguments:
-        domain -- the domain name
-    """
-    threads = []
-
-    # Setup search engines
-    for engine in engines:
-        current_thread = EngineThread(domain, engine)
-        current_thread.start()
-        threads.append(current_thread)
-
-    # Wait for all threads to complete
-    for t in threads:
-        t.join()
-
-    return getResults()
-
-
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument("launch_mode", help="Possible values are : mail", nargs='?', default="talk")
-    args = parser.parse_args()
-    if args.launch_mode == "talk":
-        app.run(debug=True, host='0.0.0.0')
-    elif args.launch_mode == "mail":
-        print("Mail mode")
-    else:
-        parser.print_help()
