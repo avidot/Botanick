@@ -44,6 +44,8 @@ def extractFileContent(filename):
     Extract the EmailHarvester results into the result file.
     Arguments:
         filename -- the result file
+
+    filename -- the result file
     """
     with open(filename) as f:
         return f.readlines()
@@ -57,11 +59,17 @@ def generatedFiles():
     return glob.glob('./result_*.txt')
 
 
+def generatedXMLFiles():
+    return glob.glob('./result_*.xml')
+
+
 def getResults():
     """Return all emails found by EmailHarvester."""
     emails = []
     for filename in generatedFiles():
         emails += extractFileContent(filename)
+        os.remove(filename)
+    for filename in generatedXMLFiles():
         os.remove(filename)
     return generateOutput(emails)
 
@@ -71,7 +79,7 @@ def search(domain):
     """
     Search emails for a specific domain name.
     Arguments:
-    domain -- the domain name
+        domain -- the domain name
     """
     threads = []
 

@@ -42,6 +42,5 @@ setup(
         'Natural Language :: English',
         'Programming Language :: Python :: 3.5',
     ],
-    test_suite='tests',
-    tests_require=test_requirements
+    test_suite='tests'
 )
