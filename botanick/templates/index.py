@@ -20,7 +20,7 @@
             <header class="mdl-layout__header">
                 <div class="mdl-layout__header-row">
                     <!-- Title -->
-                    <span class="mdl-layout-title">Botanick - Email harvester</span>
+                    <span class="mdl-layout-title"><b>Botanick</b></span>
                     <div class="mdl-layout-spacer"></div>
                     <!-- Add spacer, to align navigation to the right -->
                     <div class="mdl-layout-spacer"></div>
@@ -68,19 +68,19 @@
                             <!-- Wide card with share menu button -->
                             <style>
                             .demo-card-wide.mdl-card {
-                                      width: 512px;
-                                      }
+                                width: 512px;
+                            }
                             .demo-card-wide > .mdl-card__title {
-                                      color: #fff;
-                                        height: 176px;
-                                        background: url('https://www.squad.fr/static/images/theme/home/mobileChameleon.png') top / cover;
-                                        background-size: 30%;
-                                        background-position: 90% 100%;
-                                              background-repeat: no-repeat;
-                                          }
+                                color: #fff;
+                                height: 176px;
+                                background: url('https://www.squad.fr/static/images/theme/footer.jpg') center / cover;
+                                background-position: 90% 100%;
+                                background-repeat: no-repeat;
+                            }
+                                
                             .demo-card-wide > .mdl-card__menu {
-                                      color: #000;
-                                      }
+                                color: #000;
+                            }
                             </style>
 
                             <div class="demo-card-wide mdl-card mdl-shadow--2dp">
@@ -88,17 +88,16 @@
                                     <h2 class="mdl-card__title-text">Welcome</h2>
                                 </div>
                                 <div class="mdl-card__supporting-text">
-                                    Help us to improve Botanick.
-                                    Send an invitation to your friends. Give your feedback.
+                                    Help us to improve Botanick send your feedback.
                                 </div>
                                 <div class="mdl-card__actions mdl-card--border">
-                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                                        Help us !
+                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="https://github.com/avidot/Botanick/issues">
+                                        Feedback
                                     </a>
                                 </div>
                                 <div class="mdl-card__menu">
                                     <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                                        <i class="material-icons">share</i>
+                                        <i class="material-icons" style="color:white;">share</i>
                                     </button>
                                 </div>
                             </div>
