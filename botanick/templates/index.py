@@ -41,10 +41,11 @@
                             <script>
                             function check(event) {
                                 $('#results').html("");
-                                $('#loader').toggle();
                                 if (event.keyCode == 13) {
+                                    var domain = $('#input-search').val()
+                                    $('#loader').toggle();
                                     $.ajax({
-                                        url : '/domain=test.com',
+                                        url : '/domain=' + domain,
                                         type : 'GET',
                                         success : function(response, statut){
                                             $('#loader').toggle();
