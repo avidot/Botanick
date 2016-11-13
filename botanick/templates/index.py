@@ -27,7 +27,7 @@
                     <!-- Expandable Textfield -->
                     <!-- Navigation. We hide it in small screens. -->
                     <nav class="mdl-navigation mdl-layout--large-screen-only">
-                        <a class="mdl-navigation__link" href="">About</a>
+                        <!--<a class="mdl-navigation__link" href="">About</a>-->
                     </nav>
                </div>
             </header>
@@ -105,6 +105,15 @@
                     </div>
                 </div>
             </main>
+            <footer class="mdl-mini-footer">
+                <div class="mdl-mini-footer__left-section">
+                    <div class="mdl-logo">Botanick v0.1.0</div>
+                    <ul class="mdl-mini-footer__link-list">
+                        <li><a href="https://github.com/avidot/Botanick">Project page</a></li>
+                        <li><a href="https://www.squad.fr">Squad</a></li>
+                    </ul>
+                </div>
+            </footer>
        </div>
 </body>
 </html>
