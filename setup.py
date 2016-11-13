@@ -24,6 +24,11 @@ setup(
     long_description=readme + '\n\n' + history,
     author="Adrien VIDOT",
     author_email='avidot@squad.pro',
+    entry_points={
+        'console_scripts': [
+            'botanick=botanick.main:main'
+        ]
+    },
     url='https://github.com/avidot/botanick',
     packages=[
         'botanick',

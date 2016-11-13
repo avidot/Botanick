@@ -1,11 +1,12 @@
 # -*- coding: UTF-8 -*-
 
-from commands.parser import Parser
-from const import SPLASH
+from botanick.commands.parser import Parser
+from botanick.const import SPLASH
 
 
-if __name__ == "__main__":
+def main():
     """
+    Main entrypoint
     """
     print(SPLASH)
     try:
@@ -18,3 +19,7 @@ if __name__ == "__main__":
             command(args)
     except KeyboardInterrupt:
         print('Execution aborted by user ! Bye !')
+
+
+if __name__ == "__main__":
+    main()
