@@ -1,13 +1,19 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.teal-yellow.min.css" /> 
         <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
         <script
             src="https://code.jquery.com/jquery-3.1.1.min.js"
             integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
             crossorigin="anonymous">
         </script>
+        <style>
+        #results {
+            font-size: 18px;
+            line-height: 200%;
+        }
+        </style>
     </head>
     <body>
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -25,15 +31,6 @@
                     </nav>
                </div>
             </header>
-            <div class="mdl-layout__drawer">
-                <span class="mdl-layout-title">Title</span>
-                <nav class="mdl-navigation">
-                    <a class="mdl-navigation__link" href="">Link</a>
-                    <a class="mdl-navigation__link" href="">Link</a>
-                    <a class="mdl-navigation__link" href="">Link</a>
-                    <a class="mdl-navigation__link" href="">Link</a>
-                </nav>
-            </div>
             <main class="mdl-layout__content">
                 <div class="page-content">
                     <div class="mdl-grid">
@@ -67,7 +64,7 @@
                             
                             </div>
                         </div>
-                        <div class="mdl-cell mdl-cell--4-col">
+                        <div class="mdl-cell mdl-cell--4-col mdl-cell--hide-tablet mdl-cell--hide-phone">
                             <!-- Wide card with share menu button -->
                             <style>
                             .demo-card-wide.mdl-card {
