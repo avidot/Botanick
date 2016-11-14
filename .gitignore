@@ -5,9 +5,12 @@ lib64
 *.swp
 pyvenv.cfg
 pip-selfcheck.json
+result_*.txt
+result_*.xml
 _build
 _static
 _templates
 *egg-info
 .coverage
 coverage.xml
+tmp
