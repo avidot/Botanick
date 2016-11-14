@@ -107,7 +107,7 @@
             </main>
             <footer class="mdl-mini-footer">
                 <div class="mdl-mini-footer__left-section">
-                    <div class="mdl-logo">Botanick v0.1.0</div>
+                    <div class="mdl-logo">Botanick v__version__ = '0.2.0'</div>
                     <ul class="mdl-mini-footer__link-list">
                         <li><a href="https://github.com/avidot/Botanick">Project page</a></li>
                         <li><a href="https://www.squad.fr">Squad</a></li>
