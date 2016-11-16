@@ -8,14 +8,14 @@ test_botanick
 Tests for `botanick` module.
 """
 import unittest
-from botanick import Botanick
+from botanick.core.harvester import harvest
 
 
 class TestBotanickMethods(unittest.TestCase):
 
 	@classmethod
 	def test_botanick(cls):
-		emails_found = Botanick.search("squad.pro")
+		emails_found = harvest("squad.pro")
 		assert emails_found != ""
 
 if __name__ == '__main__':
