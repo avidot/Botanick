@@ -3,9 +3,7 @@
 from botanick.core.harvester import harvest
 from botanick.core.converters import tostring
 from botanick.core.config import config
-from Crypto.Cipher import AES
-from Crypto import Random
-import base64
+from botanick.core.crypto import decrypt
 import time
 import imaplib
 import smtplib
@@ -27,41 +25,6 @@ class MailManager():
 		self.mailbox = config[mail_section]["MAILBOX"]
 		self.scanFrequency = int(config[mail_section]["SCAN_FREQUENCY"])
 		self.block_size = 16
-
-	def encrypt( self, password ):
-		"""Function used to encrypt a password
-
-		:param password: the password to encrypt
-		:return the encrypted password
-		"""
-		password = self.pad(password)
-		iv = Random.new().read( AES.block_size )
-		cipher = AES.new( self.encryption_key, AES.MODE_CBC, iv )
-		return base64.b64encode( iv + cipher.encrypt( password ) )
-
-	def decryptPassword(self):
-		"""Function used to decrypt a password"""
-		enc = base64.b64decode(self.password)
-		iv = enc[:self.block_size]
-		cipher = AES.new(self.encryption_key, AES.MODE_CBC, iv )
-		return self.unpad(cipher.decrypt( enc[self.block_size:] ))
-
-	def pad(self, s):
-		"""Pad a string
-
-		:param s: the string to pad
-		:return: the padded string
-		"""
-		return s + (self.block_size - len(s) % self.block_size) * chr(self.block_size - len(s) % self.block_size)
-
-	@classmethod
-	def unpad(cls, s):
-		"""Unpad a string
-
-		:param s: the string to unpad
-		:return: the unpaded string
-		"""
-		return s[:-ord(s[len(s)-1:])]
 
 	@classmethod
 	def readEmail(cls, mail, emailUID):
@@ -114,7 +77,7 @@ class MailManager():
 
 	def run(self):
 		"""Main function of this mail manager"""
-		decryptedPassword = self.decryptPassword()
+		decryptedPassword = decrypt(self.password, self.encryption_key, self.block_size)
 		decryptedPassword = str(decryptedPassword,'utf-8')
 
 		mail = imaplib.IMAP4_SSL(self.imap)
