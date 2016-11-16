@@ -1,8 +1,6 @@
 # -*- coding: UTF-8 -*-
 
 import argparse
-import os
-from botanick.const import BASE_PATH
 from botanick.const import VERSION
 from botanick.commands.subcommands.webservice import webservice
 from botanick.commands.subcommands.inline import inline
@@ -21,7 +19,7 @@ class Parser():
     __parser = None
     __subparser = None
     __args = None
-    
+
     def __new__(cls):
         """
         Singleton

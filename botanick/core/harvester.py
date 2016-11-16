@@ -27,9 +27,9 @@ def emailHarvester(domain, engine):
         domain -- the domain name (e.g. gmail.com)
         engine -- the engine name (e.g. google, github, bing, etc...)
     """
-    command = " ".join(['emailharvester', 
-               '-d', domain, 
-               '-e', engine, 
+    command = " ".join(['emailharvester',
+               '-d', domain,
+               '-e', engine,
                '-s', 'result_{0}.txt'.format(engine)])
     subprocess.call(command, shell=True)
 

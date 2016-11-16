@@ -22,7 +22,8 @@ blueprint_index = Blueprint('index', __name__)
 @ns_emails.param('domain', 'The domain name')
 class MailList(Resource):
 
-    def get(self, domain):
+	@classmethod
+    def get(cls, domain):
         """
 	    Search emails for a specific domain name.
 	    Arguments:
@@ -42,7 +43,7 @@ def webservice(args):
 	api.init_app(blueprint)
 	api.add_namespace(ns_emails)
 	app.register_blueprint(blueprint)
-	
+
 	app.register_blueprint(blueprint_index)
 
 	app.run(debug=True, host=args['host'])

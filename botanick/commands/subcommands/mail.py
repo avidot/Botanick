@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
-import os
+
 from botanick.core.harvester import harvest
 from botanick.core.converters import tostring
 from botanick.core.config import config
-from botanick.const import BASE_PATH
-from botanick.const import VERSION
 from Crypto.Cipher import AES
 from Crypto import Random
 import base64
@@ -56,7 +54,8 @@ class MailManager():
 		"""
 		return s + (self.block_size - len(s) % self.block_size) * chr(self.block_size - len(s) % self.block_size)
 
-	def unpad(self, s):
+	@classmethod
+	def unpad(cls, s):
 		"""Unpad a string
 
 		:param s: the string to unpad
@@ -64,7 +63,8 @@ class MailManager():
 		"""
 		return s[:-ord(s[len(s)-1:])]
 
-	def readEmail(self, mail, emailUID):
+	@classmethod
+	def readEmail(cls, mail, emailUID):
 		"""Read an email and return the message
 
 		:param mail: the imap mail instance
@@ -75,7 +75,8 @@ class MailManager():
 		raw_email = str(data[0][1],'utf-8')
 		return email.message_from_string(raw_email)
 
-	def prepareReply(self, mailSubject, mailFrom, mailTo, mailID):
+	@classmethod
+	def prepareReply(cls, mailSubject, mailFrom, mailTo, mailID):
 		"""Prepare the reply and return the message to send
 
 		:param mailSubject: the mail subject
@@ -121,8 +122,8 @@ class MailManager():
 		try:
 			mail.login(self.username, decryptedPassword)
 			mail.select(self.mailbox)
-		except:
-			print("Login error")
+		except imaplib.IMAP4.error as e:
+			print("Login error : "+str(e))
 
 		while True:
 
@@ -135,7 +136,7 @@ class MailManager():
 				mailTo = email.utils.parseaddr(email_message['To'])[1]
 				mailFrom = email.utils.parseaddr(email_message['From'])[1]
 				mailID = email_message["Message-ID"]
-				
+
 				msg = self.prepareReply(mailSubject, mailFrom, mailTo, mailID)
 
 				# Harvest requested domain mail and add results as mail body
