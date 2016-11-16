@@ -42,7 +42,7 @@
                                     var domain = $('#input-search').val()
                                     $('#loader').toggle();
                                     $.ajax({
-                                        url : '/domain=' + domain,
+                                        url : '/api/emails/' + domain,
                                         type : 'GET',
                                         success : function(response, statut){
                                             $('#loader').toggle();

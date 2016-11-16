@@ -6,7 +6,7 @@ from botanick.const import BASE_PATH
 from botanick.const import VERSION
 from botanick.commands.subcommands.webservice import webservice
 from botanick.commands.subcommands.inline import inline
-
+from botanick.commands.subcommands.mail import mail
 def version():
   print(VERSION)
 
@@ -17,7 +17,7 @@ class Parser():
     __args = None
     __instance = None
     __command = None
-    __binding = {'webservice': webservice, 'version': version, 'inline': inline}
+    __binding = {'webservice': webservice, 'version': version, 'inline': inline, 'mail': mail}
     __parser = None
     __subparser = None
     __args = None
@@ -38,6 +38,7 @@ class Parser():
         self.__subparser = self.__parser.add_subparsers(description='valid subcommands', help='the sub-command to use')
         self.__webservice()
         self.__inline()
+        self.__mail()
         self.__version()
         self.__args = vars(self.__parser.parse_args())
         try:
@@ -63,6 +64,15 @@ class Parser():
                 description='Launch inline subcommand from command line application')
         inline.add_argument('domain', help='domain to search')
         inline.set_defaults(which='inline')
+
+    def __mail(self):
+        """
+        Launch mail subcommand from command line application
+        """
+        mail = self.__subparser.add_parser('mail',
+                description='Launch mail subcommand from command line application')
+        mail.add_argument('-k', '--key', help='Encryption key to use for password decryption', default="0.0.0.0")
+        mail.set_defaults(which='mail')
         
     def __version(self):
         """
