@@ -3,14 +3,15 @@ from Crypto.Cipher import AES
 from Crypto import Random
 import base64
 
-def encrypt(s,encryption_key):
+def encrypt(s, encryption_key, block_size):
 	"""Function used to encrypt a string
 
 	:param s: the string to encrypt
 	:param encryption_key: the encryption key
+	:param block_size: the block size used to unpad (16, 32, etc ...)
 	:return the encrypted string
 	"""
-	s = pad(s)
+	s = pad(s, block_size)
 	iv = Random.new().read( AES.block_size )
 	cipher = AES.new( encryption_key, AES.MODE_CBC, iv )
 	return base64.b64encode( iv + cipher.encrypt( s ) )

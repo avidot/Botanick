@@ -107,10 +107,9 @@ class MailManager():
 				msg.attach(MIMEText(body, 'plain'))
 
 				self.sendEmail(msg, decryptedPassword)
-			 
+
 			time.sleep(self.scanFrequency)
 
 def mail(args):
 	mailManager = MailManager(args['key'])
 	mailManager.run()
-	

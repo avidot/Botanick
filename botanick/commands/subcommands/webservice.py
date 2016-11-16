@@ -23,13 +23,13 @@ blueprint_index = Blueprint('index', __name__)
 class MailList(Resource):
 
 	@classmethod
-    def get(cls, domain):
-        """
-	    Search emails for a specific domain name.
-	    Arguments:
-	        domain -- the domain name
-	    """
-        return tostring(harvest(domain))
+	def get(cls, domain):
+		"""
+		Search emails for a specific domain name.
+		Arguments:
+			domain -- the domain name
+		"""
+		return tostring(harvest(domain))
 
 @blueprint_index.route('/')
 def showIndex():

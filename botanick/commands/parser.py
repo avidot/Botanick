@@ -27,7 +27,7 @@ class Parser():
         if Parser.__instance is None:
             Parser.__instance = object.__new__(cls)
         return Parser.__instance
-    
+
     def __init__(self):
         """
         Initialize command parser and subcommands
