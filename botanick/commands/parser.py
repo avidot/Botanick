@@ -44,7 +44,7 @@ class Parser():
         except KeyError:
             self.__parser.print_help()
             exit(1)
-            
+
     def __webservice(self):
         """
         Launch webservice subcommand from command line application
@@ -53,7 +53,7 @@ class Parser():
                 description='Launch webservice subcommand from command line application')
         webservice.add_argument('-H', '--host', help='Host address to use', default="0.0.0.0")
         webservice.set_defaults(which='webservice')
-        
+
     def __inline(self):
         """
         Launch inline subcommand from command line application
@@ -71,14 +71,14 @@ class Parser():
                 description='Launch mail subcommand from command line application')
         mail.add_argument('-k', '--key', help='Encryption key to use for password decryption', default="0.0.0.0")
         mail.set_defaults(which='mail')
-        
+
     def __version(self):
         """
         Display current version
         """
         version = self.__subparser.add_parser('version', description='Display current version')
         version.set_defaults(which='version')
-    
+
     def getCommand(self):
         """
         Return the selected sub-command
@@ -89,10 +89,9 @@ class Parser():
             print('Unrecognized command !')
             self.__parser.print_help()
             exit(1)
-            
+  
     def getArgs(self):
         """
         Return the args of the selected sub-command
         """
         return {key: value for key, value in self.__args.items() if key != 'which'}
-        
