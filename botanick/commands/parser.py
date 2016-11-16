@@ -89,7 +89,7 @@ class Parser():
             print('Unrecognized command !')
             self.__parser.print_help()
             exit(1)
-  
+
     def getArgs(self):
         """
         Return the args of the selected sub-command
