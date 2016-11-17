@@ -75,20 +75,27 @@ class MailManager():
 		finally:
 			server.close()
 
-	def run(self):
-		"""Main function of this mail manager"""
-		decryptedPassword = decrypt(self.password, self.encryption_key, self.block_size)
-		decryptedPassword = str(decryptedPassword,'utf-8')
+	def openImapConnection(self, decryptedPassword):
+		"""Open the IMAP connection
 
+		:param decryptedPassword: the decrypted password
+		:return: the imap mail connection
+		"""
 		mail = imaplib.IMAP4_SSL(self.imap)
-
 		try:
 			mail.login(self.username, decryptedPassword)
 			mail.select(self.mailbox)
 		except imaplib.IMAP4.error as e:
 			print("Login error : "+str(e))
+		return mail
+
+	def run(self):
+		"""Main function of this mail manager"""
+		decryptedPassword = decrypt(self.password, self.encryption_key, self.block_size)
+		decryptedPassword = str(decryptedPassword,'utf-8')
 
 		while True:
+			mail = self.openImapConnection(decryptedPassword)
 
 			result, data = mail.uid('search', None, '(UNSEEN HEADER Subject "[Search]")')
 			for email_uid in data[0].split():
@@ -108,6 +115,8 @@ class MailManager():
 
 				self.sendEmail(msg, decryptedPassword)
 
+			mail.close()
+			mail.logout()
 			time.sleep(self.scanFrequency)
 
 def mail(args):
