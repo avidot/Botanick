@@ -27,11 +27,9 @@ Features
 * Reachable by email communication
 * Reachable by hubot integration (slack, gitlab, etc...)
 
-
-Sources
--------
-
-.. automodule:: Botanick
-   :members:
-   :undoc-members:
-
+Indices and tables
+==================
+ 
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

@@ -24,10 +24,9 @@ class MailList(Resource):
 
 	@classmethod
 	def get(cls, domain):
-		"""
-		Search emails for a specific domain name.
-		Arguments:
-			domain -- the domain name
+		"""Search emails for a specific domain name.
+		
+		:param domain: the domain name
 		"""
 		return tostring(harvest(domain))
 
