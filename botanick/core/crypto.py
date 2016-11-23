@@ -9,7 +9,7 @@ def encrypt(s, encryption_key, block_size):
 	:param s: the string to encrypt
 	:param encryption_key: the encryption key
 	:param block_size: the block size used to unpad (16, 32, etc ...)
-	:return the encrypted string
+	:return: the encrypted string
 	"""
 	s = pad(s, block_size)
 	iv = Random.new().read( AES.block_size )
@@ -22,7 +22,7 @@ def decrypt(s, encryption_key, block_size):
 	:param s: the string to decrypt
 	:param encryption_key: the encryption key
 	:param block_size: the block size used to unpad
-	:return the decrypted string
+	:return: the decrypted string
 	"""
 	enc = base64.b64decode(s)
 	iv = enc[:block_size]

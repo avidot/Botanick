@@ -21,11 +21,10 @@ class EngineThread (threading.Thread):
 
 
 def emailHarvester(domain, engine):
-    """
-    Call EmailHarvester module.
-    Arguments:
-        domain -- the domain name (e.g. gmail.com)
-        engine -- the engine name (e.g. google, github, bing, etc...)
+    """Call EmailHarvester module.
+
+    :param domain: the domain name (e.g. gmail.com)
+    :param engine: the engine name (e.g. google, github, bing, etc...)
     """
     command = " ".join(['emailharvester',
                '-d', domain,
@@ -35,12 +34,10 @@ def emailHarvester(domain, engine):
 
 
 def extract(filename):
-    """
-    Extract the EmailHarvester results into the result file.
-    Arguments:
-        filename -- the result file
+    """Extract the EmailHarvester results into the result file.
 
-    filename -- the result file
+    :param filename: the result file
+    :return: the file content
     """
     with open(filename) as f:
         return f.readlines()
@@ -49,15 +46,16 @@ def extract(filename):
 def lsfiles():
     """
     List all generated files (txt and xml).
+    :return: the list a results txt and xml files
     """
     return glob.glob('./result_*.txt'), glob.glob('./result_*.xml')
 
 
 def files(extension="txt"):
-    """
-    List all file with specified extension (txt and xml).
-    Arguments:
-        extension -- extension to search
+    """List all file with specified extension (txt and xml).
+
+    :param extension: extension to search
+    :return: the list of files
     """
     txtfiles, xmlfiles = lsfiles()
     if extension=="txt":
@@ -69,17 +67,19 @@ def files(extension="txt"):
 
 
 def clean(filename):
-    """
-    Remove specified file (txt and xml).
-    Arguments:
-        filename -- file to delete
+    """Remove specified file (txt and xml).
+
+    :param filename: file to delete
     """
     os.remove(filename)
     os.remove(filename.replace("txt", 'xml'))
 
 
 def results():
-    """Return all emails found by EmailHarvester."""
+    """Return all emails found by EmailHarvester.
+
+    :return: the emails harvested
+    """
     emails = []
     for filename in files():
         emails += extract(filename)
@@ -88,10 +88,10 @@ def results():
 
 
 def harvest(domain):
-    """
-    Search emails for a specific domain name.
-    Arguments:
-        domain -- the domain name
+    """Search emails for a specific domain name.
+
+    :param domain: the domain name
+    :return: the emails harvested
     """
     threads = []
     for engine in engines:
