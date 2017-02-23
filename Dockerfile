@@ -27,5 +27,6 @@ COPY ./botanick /app/botanick
 ENV PYTHONIOENCODING UTF-8
 ENV HOST 0.0.0.0
 ENV PYTHONPATH $PYTHONPATH:/app/botanick
+EXPOSE 5000
 
 CMD python3 /app/botanick/main.py webservice --host $HOST
